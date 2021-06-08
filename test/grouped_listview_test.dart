@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:grouped_listview/grouped_listview.dart';
 
 void main() {
-  Grouper<TestClass, String> cut;
+  late Grouper<TestClass, String> cut;
   var groupBy = (TestClass c) {
     return c.group;
   };
@@ -25,7 +25,7 @@ void main() {
   });
 
   test('empty list returns empty list', () {
-    var collection = List<TestClass>();
+    var collection = <TestClass>[];
 
     var result = cut.groupList(collection, groupBy);
 
@@ -50,8 +50,6 @@ void main() {
 
     expect(result.length, 10); // 7 Elements + 3 Group headers
   });
-
-
 }
 
 class TestClass {
@@ -59,5 +57,4 @@ class TestClass {
   String group;
 
   TestClass(this.value, this.group);
-
 }
